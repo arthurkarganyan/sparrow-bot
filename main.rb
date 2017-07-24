@@ -9,7 +9,7 @@ config = YAML.load_file('config.yml')
 
 $redis = Redis.new(db: config['redis_db'])
 
-logger = Logger.new('log/bot.log')
+logger = Logger.new(config['log_path'])
 SECRETS_HASH = config["secrets"]
 
 Telegram::Bot::Client.run(config["bot_token"], logger: logger, timeout: 3) do |bot|

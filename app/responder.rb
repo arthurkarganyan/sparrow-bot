@@ -11,8 +11,9 @@ class Responder
   end
 
   def handle!
-    bot.logger.info("[Responder#handle!] chat_id=#{msg.chat.id}: #{msg.text}")
+    bot.logger.info("[Responder#handle!] chat_id=#{msg.chat.id}: #{text}")
     return try_auth unless auth?
+    $redis.rpush("received_msgs:#{msg.chat.id}", text)
     reply "I am alive!" if text == "/ping"
   end
 

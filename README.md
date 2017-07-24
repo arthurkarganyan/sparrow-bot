@@ -17,3 +17,5 @@ Example:
 `LRANGE active_responders 0 -1` - list active chats
 
 `DEL [key]` - drop key
+
+`LRANGE received_msgs:[chat_id] 0 -1` - received messages
